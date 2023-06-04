@@ -15,10 +15,18 @@ app.post('/', function(req, res) {
   res.json({ mensaje: 'Método post' })   
 })
 
-app.del('/', function(req, res) {
+app.delete('/', function(req, res) {
   res.json({ mensaje: 'Método delete' })  
 })
 
+
+var router = express.Router()
+
+router.get('/', function(req, res) {
+  res.json({mensaje: 'Bienvenido!'})
+})
+
+app.use('/api', router);
 // iniciamos nuestro servidor
 app.listen(port)
 console.log('API escuchando en el puerto ' + port)
