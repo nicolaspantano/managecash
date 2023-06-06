@@ -1,8 +1,8 @@
-import express from 'express';
+const express = require('express');
 //import UserControllers from '../controllers/userControllers.js';
 //import checkUserAuth from '../middleware/authmiddleware.js';
 const router = express.Router();
-import Usuario from "../models/usuario.js";
+const Usuario = require("../models/usuario.js");
 // route level middleware
 
 //router.use('/changepassword', checkUserAuth)
@@ -18,11 +18,18 @@ import Usuario from "../models/usuario.js";
 //router.post('/reset-password/:id/:token', UserControllers.userPasswordReset);
 router.get('/', async (req, res) => {
 	try{
+		const newUser = new Usuario({
+        	email: "ñañaña@gmail.com",
+        	password: "1234",
+        })
+
+        await newUser.save()
+
 		const users = await Usuario.find()
 		res.status(200).json({
 			status: "success",
 			message: "All users",
-			users: users;
+			users: users
 		})
 	}
 	catch (error) {
@@ -39,4 +46,4 @@ router.get('/', async (req, res) => {
 
 
 
-export default router;
+module.exports = router;

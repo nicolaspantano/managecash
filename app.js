@@ -1,9 +1,9 @@
 const express = require('express')
 const cors = require("cors")
-const {config} = requre('dotenv')
+const {config} = require('dotenv')
 const app = express()
-import connectDB from './config/db.js';
-import userRoutes from './routes/usuarios.js';
+const connectDB = require('./config/db.js');
+const userRoutes = require('./routes/usuarios.js');
 
 
 app.use(cors(
