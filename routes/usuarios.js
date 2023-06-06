@@ -1,24 +1,42 @@
-const express = require("express")
-const router = express.Router()
+import express from 'express';
+//import UserControllers from '../controllers/userControllers.js';
+//import checkUserAuth from '../middleware/authmiddleware.js';
+const router = express.Router();
+import Usuario from "../models/usuario.js";
+// route level middleware
 
-const Usuario = require('../models/usuario.js')
+//router.use('/changepassword', checkUserAuth)
+//router.use('/loggeduser', checkUserAuth)
 
-router.get('/usuarios', async (req, res) => {
-	try
-	{
-		const usuarios = await Usuario.find()
-		console.log(usuarios);
 
-		/*res.render("usuarios", {
-			arrayUsuarios: usuarios
-		})*/
 
-		res.json({arrayUsuarios: usuarios})
 
-	} catch (error) {
-		console.log(error)
+// public routes 
+//router.post('/register', UserControllers.userRegistration);
+//router.post('/login', UserControllers.userLogin);
+//router.post('/send-reset-password-email', UserControllers.sendUserPasswordResetEmail);
+//router.post('/reset-password/:id/:token', UserControllers.userPasswordReset);
+router.get('/', async (req, res) => {
+	try{
+		const users = await Usuario.find()
+		res.status(200).json({
+			status: "success",
+			message: "All users",
+			users: users;
+		})
 	}
-
+	catch (error) {
+		res.status(500).json({
+			status: "failed",
+			message: error.message
+		})
+	}
 })
 
-module.exports = router
+//protected routes
+//router.post('/changepassword', UserControllers.changeUserPassword);
+//router.get('/loggeduser', UserControllers.loggedUser);
+
+
+
+export default router;
