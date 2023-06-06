@@ -12,7 +12,7 @@ const {readdirSync} = require("fs")
 //app.use("/", require('mongoose'));
 //require('./mongoose');
 
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 
 const user = 'new_user_1';
 const password = 'pnH4hlnpa2GwyoHv';
@@ -24,7 +24,7 @@ mongoose.connect(uri,
   }
 )
 .then(() => console.log('Base de datos conectada'))
-.catch(e => console.log(e))
+.catch(e => console.log(e))*/
 
 
 //agrega todas las rutas
