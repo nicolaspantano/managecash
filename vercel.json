@@ -11,7 +11,10 @@
 		{
 			"src":"/(.*)",
 			"dest":"./index.js"
+		},
+		{
+			"src": "/usuarios",
+			"dest": "/"
 		}
 	],
-	"installCommand": "npm install"
 }
